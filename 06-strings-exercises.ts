@@ -41,7 +41,7 @@ The following lines should help test if your function works correctly. They shou
 */
 
 const isAtIndex = (character: string, num: number, word: string): boolean => {
-  return word.indexOf(character) !== -1 && word.indexOf(character) == num;
+  return word.indexOf(character) === num;
 };
 console.log("e is at index 1 in hello:", isAtIndex("e", 1, "hello") === true);
 console.log("e is at index 4 in Alice:", isAtIndex("e", 4, "Alice") === true);
@@ -75,7 +75,7 @@ console.log(c.length); // 8
 
 process.stdout.write("\n*6·3.\n");
 /*
-*6·3. Create a function called 'inAlphabet' that takes a string and returns true if it is included in the alphabet, otherwise false. It only needs to work on lowercase letters.
+*6·3. Create a function called 'inAlphabet' that takes a string and returns true if it is included in the alphabet, otherwise false. It only needs to work on lowercase letters. Note: account for when search string is an empty string, what happens?
 
 Use the includes() method.
 
@@ -87,10 +87,11 @@ const inAlphabet = (searchString: string): boolean =>
 console.log("a is in the alphabet:", inAlphabet("a") === true);
 console.log("lmno is in the alphabet:", inAlphabet("lmno") === true);
 console.log("1 is not in the alphabet:", inAlphabet("1") === false);
+console.log("empty string returns false", inAlphabet("") === false);
 
 process.stdout.write("\n*6·301.\n");
 /*
-*6·301. Create a function called 'isDigit' that takes a digit as a string and returns true if it is included in the following string, otherwise false.
+*6·301. Create a function called 'isDigit' that takes a digit as a string and returns true if it is included in the following string, otherwise false. Note: accoutn for empty digits
 
 The following lines should help test if your function works correctly. They should print true.
 */
@@ -100,6 +101,7 @@ const isDigit = (digit: string): boolean =>
 console.log("1 is a digit:", isDigit("1") === true);
 console.log("9 is a digit:", isDigit("9") === true);
 console.log("a is not a digit:", isDigit("a") === false);
+console.log("empty string returns false", isDigit("") === false);
 
 process.stdout.write("\n*6·302.\n");
 /*
@@ -133,6 +135,14 @@ console.log(
 console.log(
   "there is bad language in message",
   badLanguage("There are many butt faces at work") === true
+);
+console.log(
+  "there is bad language in message",
+  badLanguage("There are many poopy heads at work") === true
+);
+console.log(
+  "there is bad language in message",
+  badLanguage("There are many snot brains at work") === true
 );
 
 process.stdout.write("\n*6·31.\n");
@@ -344,7 +354,6 @@ process.stdout.write("\n*6·38.\n");
 ...
 */
 const alternating = (num: number): string => {
-  // if odd number, remove last character of '10'
   const isEven = num % 2 === 0;
   return isEven ? "10".repeat(num / 2) : "10".repeat((num - 1) / 2) + "1";
 };
@@ -359,14 +368,28 @@ process.stdout.write("\n*6·4.\n");
  */
 
 const hasDigit = (str: string): boolean => {
-  for (let i = 0; i < str.length; i++) {
-    if (Number(str[i])) return true;
-  }
-  return false;
+  return (
+    str.includes("0") ||
+    str.includes("1") ||
+    str.includes("2") ||
+    str.includes("3") ||
+    str.includes("4") ||
+    str.includes("5") ||
+    str.includes("6") ||
+    str.includes("7") ||
+    str.includes("8") ||
+    str.includes("9")
+  );
+  // for (let i = 0; i < str.length; i++) {
+  //   if (str[i] === '0') return true;
+  //   if (Number(str[i])) return true;
+  // }
+  // return false;
 };
 
 console.log("hello23 has a digit", hasDigit("hello23") === true);
 console.log("bye world does not have a digit", hasDigit("bye world") === false);
+console.log("hey0 has a digit", hasDigit("hey0") === true);
 process.stdout.write("\n*6·41.\n");
 /*
  *6·41. Create a function called 'hasPunctuation' that takes a string and returns true if it contains any punctuation (., !, ?), otherwise false.
