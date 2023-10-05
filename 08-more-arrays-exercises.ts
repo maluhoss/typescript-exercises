@@ -12,7 +12,7 @@ The following lines should help test if your function works correctly. They shou
 const eqArrays = (first: any[], second: any[]): boolean => {
   return (
     first.length === second.length &&
-    first.every((_, i: number) => {
+    first.every((_, i) => {
       return Array.isArray(first[i]) && Array.isArray(second[i])
         ? eqArrays(first[i], second[i])
         : first[i] === second[i];
@@ -37,8 +37,7 @@ process.stdout.write("\n*8·1.\n");
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const anyOdd = (nums: number[]): boolean =>
-  nums.some((x: number): boolean => x % 2 === 1);
+const anyOdd = (nums: number[]): boolean => nums.some((x) => x % 2 === 1);
 
 console.log("anyOdd tests");
 console.log(anyOdd([1, 2, 4, 6]));
@@ -51,8 +50,7 @@ process.stdout.write("\n*8·11.\n");
 
 Remember to write tests!
 */
-const anyNegative = (nums: number[]): boolean =>
-  nums.some((x: number): boolean => x < 0);
+const anyNegative = (nums: number[]): boolean => nums.some((x) => x < 0);
 
 console.log("anyNegative tests");
 console.log("[1,2,3,-1] has a negative", anyNegative([1, 2, 3, -1]) === true);
@@ -64,7 +62,7 @@ process.stdout.write("\n*8·12.\n");
  *8·12. Create a function called 'anyZs' that takes an array of words (strings) and returns true if the letter "z" (lowercase or uppercase) is found in any of the words, otherwise false.
  */
 const anyZs = (words: string[]): boolean =>
-  words.some((s: string): boolean => s.toLowerCase().includes("z"));
+  words.some((s) => s.toLowerCase().includes("z"));
 
 console.log("anyZs tests");
 console.log(
@@ -85,7 +83,7 @@ process.stdout.write("\n*8·13.\n");
  *8·13. Create a function called 'overTheLimit' that takes a limit (number) and an array of account balances (numbers). It should return true if any of the account balances is greater than the given limit, otherwise false.
  */
 const overTheLimit = (limit: number, accBalance: number[]): boolean =>
-  accBalance.some((x: number): boolean => x > limit);
+  accBalance.some((x) => x > limit);
 
 console.log("overTheLimit tests");
 console.log(
@@ -105,9 +103,7 @@ The following lines should help test if your function works correctly. They shou
 */
 const addNewLetterName = (name: string, names: string[]): string[] => {
   const newNameFirstLetter: string = name.toLowerCase()[0];
-  return names.some((n: string) =>
-    n.toLowerCase().startsWith(newNameFirstLetter)
-  )
+  return names.some((n) => n.toLowerCase().startsWith(newNameFirstLetter))
     ? names
     : [...names, name];
 };
@@ -137,7 +133,7 @@ process.stdout.write("\n*8·2.\n");
  *8·2. Create a function called 'irishGroup' that takes an array of surnames (strings) and returns true if they all begin with "Mc", otherwise false.
  */
 const irishGroup = (surnames: string[]): boolean =>
-  surnames.every((s: string) => s.toLowerCase().startsWith("mc"));
+  surnames.every((s) => s.toLowerCase().startsWith("mc"));
 
 console.log(
   "all surnames start with Mc",
@@ -161,8 +157,7 @@ process.stdout.write("\n*8·21.\n");
  *8·21. Create a function called 'allWhole' that takes an array of numbers and returns true if they are all whole numbers, otherwise false. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
  */
 const isWhole = (n: number): boolean => Number.isInteger(n) && n >= 0;
-const allWhole = (nums: number[]): boolean =>
-  nums.every((n: number): boolean => isWhole(n));
+const allWhole = (nums: number[]): boolean => nums.every((n) => isWhole(n));
 
 console.log("allWhole tests");
 console.log("all whole numbers", allWhole([0, 3, 5, 7]) === true);
@@ -199,7 +194,7 @@ const britishGang = (surnames: string[]): boolean => {
     surname.toLowerCase().startsWith("mc") ||
     surname.toLowerCase().startsWith("mac");
 
-  return surnames.every((s: string): boolean => isBritish(s));
+  return surnames.every((s) => isBritish(s));
 };
 
 console.log("britishGang tests");
@@ -233,8 +228,7 @@ process.stdout.write("\n*8·3.\n");
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const convertMoney = (values: number[]): number[] =>
-  values.map((n: number): number => n * 100);
+const convertMoney = (values: number[]): number[] => values.map((n) => n * 100);
 
 console.log("convertMoney tests");
 console.log(eqArrays(convertMoney([2, 3.5, 10]), [200, 350, 1000]));
@@ -249,7 +243,7 @@ The following lines should help test if your function works correctly. They shou
 const convertTemperatures = (temps: number[], conversion: string): number[] => {
   const FtoC = (temp: number): number => (temp - 32) / 1.8;
   const CtoF = (temp: number): number => temp * 1.8 + 32;
-  return temps.map((t: number): number =>
+  return temps.map((t) =>
     conversion.toLowerCase() === "ftoc" ? FtoC(t) : CtoF(t)
   );
 };
@@ -265,9 +259,7 @@ process.stdout.write("\n*8·32.\n");
 The following lines should help test if your function works correctly. They should print true.
  */
 const bonusSalaries = (salaryBonus: [number, boolean][]): number[] =>
-  salaryBonus.map(([salary, bonus]: [number, boolean]): number =>
-    bonus ? salary * 10 : salary
-  );
+  salaryBonus.map(([salary, bonus]) => (bonus ? salary * 10 : salary));
 
 console.log("bonusSalaries tests");
 console.log(
@@ -312,7 +304,7 @@ const rpsCopy = (firstHand: hand, secondHand: hand): results => {
 };
 
 const rpsResults = (games: hand[][]): results[] =>
-  games.map(([first, second]: hand[]): results => rpsCopy(first, second));
+  games.map(([first, second]) => rpsCopy(first, second));
 
 console.log("rpsResults tests");
 console.log(
@@ -344,8 +336,7 @@ process.stdout.write("\n*8·34.\n");
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const makeRectangles = (nums: number[]): number[][] =>
-  nums.map((n: number): number[] => [n, n]);
+const makeRectangles = (nums: number[]): number[][] => nums.map((n) => [n, n]);
 
 console.log("makeRectangles tests");
 console.log(
@@ -372,13 +363,13 @@ process.stdout.write("\n*8·4.\n");
  *8·4. Say hello to each of the names in the following array (e.g. Hello, Alice!).
  */
 const names: string[] = ["Alice", "Bob", "Carol", "Dave", "Eve"];
-names.forEach((name: string): void => console.log(name));
+names.forEach((name) => console.log(name));
 
 process.stdout.write("\n*8·41.\n");
 /*
  *8·41. Greet each person in their own language (e.g. Bonjour, Alice!).
  */
-const people = [
+const people: string[][] = [
   ["Alice", "French"],
   ["Bob", "English"],
   ["Carol", "German"],
@@ -397,7 +388,7 @@ const languageGreeting = (name: string, language: string): string => {
   }
 };
 
-people.forEach(([name, language]: string[]): void =>
+people.forEach(([name, language]) =>
   console.log(languageGreeting(name, language))
 );
 
@@ -406,9 +397,7 @@ process.stdout.write("\n*8·42.\n");
  *8·42. Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
  */
 const manyLovers = (couples: string[][]): void =>
-  couples.forEach(([first, second]: string[]): void =>
-    console.log(`${first} loves ${second}`)
-  );
+  couples.forEach(([first, second]) => console.log(`${first} loves ${second}`));
 
 manyLovers([
   ["Alice", "Bob"],
@@ -422,7 +411,7 @@ process.stdout.write("\n*8·5.\n");
  *8·5. Create a function called 'wholeNumbers' that takes an array of numbers and returns a new array containing only the numbers that are whole. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
  */
 const wholeNumbers = (nums: number[]): number[] =>
-  nums.filter((n: number): boolean => isWhole(n));
+  nums.filter((n) => isWhole(n));
 
 console.log("wholeNumbers tests");
 console.log(
@@ -439,7 +428,7 @@ process.stdout.write("\n*8·51.\n");
  *8·51. Create a function called 'countNulls' that takes an array and returns how many null values are in it.
  */
 const countNulls = <T>(list: Array<T | null>): number =>
-  list.filter((x: T | null): boolean => x === null).length;
+  list.filter((x) => x === null).length;
 
 console.log("countNulls tests");
 console.log("1 null", countNulls([1, 5, null]) === 1);
@@ -451,7 +440,7 @@ process.stdout.write("\n*8·52.\n");
  *8·52. Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. We'll say a Scottish surname is one that starts with "Mac".
  */
 const mostlyScottish = (surnames: string[]): boolean => {
-  const namesWithMac: string[] = surnames.filter((s: string): boolean =>
+  const namesWithMac: string[] = surnames.filter((s) =>
     s.toLowerCase().startsWith("mac")
   );
   return (namesWithMac.length / surnames.length) * 100 > 50;
@@ -478,7 +467,7 @@ process.stdout.write("\n*8·53.\n");
 The following lines should help test if your function works correctly. They should print true.
 */
 const removeLetterNames = (letter: string, names: string[]): string[] =>
-  names.filter((n: string): boolean => !n.startsWith(letter));
+  names.filter((n) => !n.startsWith(letter));
 
 console.log("removeLetterNames");
 console.log(
@@ -501,7 +490,7 @@ process.stdout.write("\n*8·54.\n");
 The following lines should help test if your function works correctly. They should print true.
 */
 const rpsPoints = (games: hand[][]): number =>
-  rpsResults(games).filter((r: number): boolean => r === 1).length;
+  rpsResults(games).filter((r) => r === 1).length;
 
 console.log("rpsPoints tests");
 console.log(rpsPoints([["paper", "rock"]]) === 1);
@@ -526,8 +515,7 @@ process.stdout.write("\n*8·6.\n");
 /*
  *8·6. Create a function called 'sum' that takes an array of numbers and returns their sum, or 0 for an empty array.
  */
-const sum = (nums: number[]): number =>
-  nums.reduce((acc: number, x: number): number => acc + x, 0);
+const sum = (nums: number[]): number => nums.reduce((acc, x) => acc + x, 0);
 
 console.log("sum tests");
 console.log("sum of [1,2,3] should be 6", sum([1, 2, 3]) === 6);
@@ -539,8 +527,7 @@ process.stdout.write("\n*8·601.\n");
 /*
  *8·601. Create a function called 'product' that takes an array of numbers and returns their product, or 1 for an empty array.
  */
-const product = (nums: number[]): number =>
-  nums.reduce((acc: number, x: number): number => acc * x, 1);
+const product = (nums: number[]): number => nums.reduce((acc, x) => acc * x, 1);
 
 console.log("product tests");
 console.log("product of [1,2,3] should be 6", product([1, 2, 3]) === 6);
@@ -555,7 +542,7 @@ process.stdout.write("\n*8·61.\n");
 The following lines should help test if your function works correctly. They should print true.
 */
 const duplicates = <T>(list: T[]): T[] => {
-  return list.reduce((acc: T[], x: T): T[] => [...acc, x, x], []);
+  return list.reduce((acc: T[], x) => [...acc, x, x], []);
 };
 
 console.log("duplicates tests");
@@ -576,7 +563,7 @@ process.stdout.write("\n*8·62.\n");
  *8·62. Create a function called 'maximum' that takes an array of numbers and returns the highest number.
  */
 const maximum = (nums: number[]): number =>
-  nums.reduce((acc: number, x: number): number => (acc > x ? acc : x));
+  nums.reduce((acc, x) => (acc > x ? acc : x));
 
 console.log("maximum tests");
 console.log("maximum for [1,4,7] should be 7", maximum([1, 4, 7]) === 7);
@@ -587,7 +574,7 @@ process.stdout.write("\n*8·621.\n");
  *8·621. Create a function called 'minimum' that takes an array of numbers and returns the lowest number.
  */
 const minimum = (nums: number[]): number =>
-  nums.reduce((acc: number, x: number): number => (acc < x ? acc : x));
+  nums.reduce((acc, x) => (acc < x ? acc : x));
 
 console.log("minimum tests");
 console.log("minimum for [1,4,7] should be 1", minimum([1, 4, 7]) === 1);
@@ -600,10 +587,7 @@ process.stdout.write("\n*8·63.\n");
 The following lines should help test if your function works correctly. They should print true.
 */
 const dropRepeats = <T>(list: T[]): T[] =>
-  list.reduce(
-    (acc: T[], x: T): T[] => (acc.includes(x) ? acc : [...acc, x]),
-    []
-  );
+  list.reduce((acc: T[], x) => (acc.includes(x) ? acc : [...acc, x]), []);
 
 console.log("dropRepeats tests");
 console.log(eqArrays(dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]), [1, 2, 3, 4]));
@@ -616,7 +600,7 @@ process.stdout.write("\n*8·64.\n");
 The following lines should help test if your function works correctly. They should print true.
 */
 const flatten = <T>(matrix: T[][]): T[] =>
-  matrix.reduce((acc: T[], x: T[]): T[] => [...acc, ...x], []);
+  matrix.reduce((acc: T[], x) => [...acc, ...x], []);
 
 console.log("flatten tests");
 console.log(
@@ -652,11 +636,7 @@ process.stdout.write("\n*8·65.\n");
  *8·65. Create a function called 'totalMinutes' that takes an array of time pairs and returns the total minutes. Each time pair is two numbers: [hours, minutes].
  */
 const totalMinutes = (times: number[][]): number =>
-  times.reduce(
-    (acc: number, [hours, minutes]: number[]): number =>
-      acc + hours * 60 + minutes,
-    0
-  );
+  times.reduce((acc, [hours, minutes]) => acc + hours * 60 + minutes, 0);
 
 console.log("totalMinutes tests");
 console.log(
@@ -682,7 +662,7 @@ process.stdout.write("\n*8·7.\n");
  *8·7. Create a function called 'intersperse' that takes a value and an array, and returns a new array with the value interspersed between each element of the original array.
  */
 const intersperse = <T>(value: T, list: T[]): T[] =>
-  list.reduce((acc: T[], x: T): T[] => [...acc, x, value], []).slice(0, -1);
+  list.reduce((acc: T[], x) => [...acc, x, value], []).slice(0, -1);
 
 console.log("intersperse tests");
 console.log(
@@ -694,10 +674,7 @@ process.stdout.write("\n*8·71.\n");
  *8·71. Create a function called 'bigWordLetters' that takes an array of words (strings) and returns the total number of letters in all of the words that are more than 3 letters long.
  */
 const bigWordLetters = (words: string[]): number =>
-  words.reduce(
-    (acc: number, x: string): number => (x.length > 3 ? acc + x.length : acc),
-    0
-  );
+  words.reduce((acc, x) => (x.length > 3 ? acc + x.length : acc), 0);
 
 console.log("bigWordLetters tests");
 console.log(
@@ -711,7 +688,7 @@ process.stdout.write("\n*8·72.\n");
  *8·72. Create a function called 'gamePoints' that takes an array of game results and returns the total points, according to the following description. Each game result is a pair of scores: [home team score, away team score]. Games where the home team won are worth 3 points. Games where the home team lost are worth 0 points. Tie games are worth 1 point.
  */
 const gamePoints = (results: number[][]): number =>
-  results.reduce((acc: number, [home, away]: number[]): number => {
+  results.reduce((acc, [home, away]) => {
     if (home === away) return acc + 1;
     else if (home > away) return acc + 3;
     else return acc;
