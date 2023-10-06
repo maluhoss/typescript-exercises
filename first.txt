@@ -1,0 +1,6 @@
+here
+are some lines
+to copy
+---
+but none of this
+should get copied
